@@ -13,12 +13,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Text("Home")
-                .navigationBarTitle("Passa")
+                .navigationBarTitle("Passa",displayMode: .inline)
                 .navigationBarItems(
                     leading:
                         NavigationLink(destination: CameraView()) {
                             Image(systemName: "camera")
-                        }
+                    }
                     ,trailing:
                     NavigationLink(destination: EventsView()) {
                         Image(systemName: "list.dash")

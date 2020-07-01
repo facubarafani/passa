@@ -7,10 +7,20 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct EventsView: View {
+    let db = Firestore.firestore();
     var body: some View {
-        Text("Events View")
+        VStack {
+            Text("Events View")
+        }
+        .navigationBarTitle("Eventos")
+        .navigationBarItems(
+            trailing:
+            NavigationLink(destination: CreateEventView()) {
+                Image(systemName: "plus")
+        })
     }
 }
 
