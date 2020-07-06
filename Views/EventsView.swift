@@ -14,8 +14,14 @@ struct EventsView: View {
     @State var events: [Event] = []
     var body: some View {
         List(events) { event in
-            HStack {
+            NavigationLink(destination: EventDetailView(eventName: event.name)) {
+                VStack(alignment: .leading) {
                 Text(event.name)
+                    .bold()
+                Text(event.description)
+                    .italic()
+                    .foregroundColor(Color.gray)
+                }
             }
         }
         .onAppear {

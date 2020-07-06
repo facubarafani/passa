@@ -21,6 +21,7 @@ struct CreateEventView: View {
     @State var eventName: String = ""
     @State var eventDescription: String = ""
     @State private var eventDate = Date()
+    @State var eventLocation: String = ""
     let db = Firestore.firestore();
     
     var body: some View {
@@ -34,6 +35,10 @@ struct CreateEventView: View {
                     TextField("Descripcion del evento",text: $eventDescription)
                 }
             DatePicker("Fecha del evento", selection: $eventDate,in: Date()..., displayedComponents: .date)
+                HStack{
+            Image(systemName: "mappin.and.ellipse");
+                    TextField("Lugar del evento",text: $eventLocation)
+                }
         }
     .navigationBarTitle("Nuevo evento")
         .navigationBarItems(trailing: Button(action: {
