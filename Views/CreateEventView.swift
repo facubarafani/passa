@@ -20,7 +20,7 @@ struct CreateEventView: View {
     
     @State var eventName: String = ""
     @State var eventDescription: String = ""
-    @State private var eventDate = Date()
+    @State var eventDate = Date()
     @State var eventLocation: String = ""
     let db = Firestore.firestore();
     

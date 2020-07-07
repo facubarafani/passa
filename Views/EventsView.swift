@@ -15,7 +15,7 @@ struct EventsView: View {
     
     var body: some View {
         List(eventData.events) { event in
-            NavigationLink(destination: EventDetailView(eventName: event.name)) {
+            NavigationLink(destination: EventDetailView(eventName: event.name,eventDescription: event.description,eventLocation: event.location,eventDate: event.date)) {
                 VStack(alignment: .leading) {
                 Text(event.name)
                     .bold()

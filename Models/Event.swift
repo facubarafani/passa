@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import Firebase
 
 struct Event: Identifiable{
     var id: Int
     let name: String
     let description: String
     let location: String
+    let date: Timestamp
 }
