@@ -53,6 +53,7 @@ struct CreateEventView: View {
             "name": eventName,
             "description": eventDescription,
             "date": eventDate,
+            "location": eventLocation,
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")

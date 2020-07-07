@@ -11,9 +11,10 @@ import Firebase
 
 struct EventsView: View {
     let db = Firestore.firestore();
-    @State var events: [Event] = []
+    @ObservedObject var eventData = EventData()
+    
     var body: some View {
-        List(events) { event in
+        List(eventData.events) { event in
             NavigationLink(destination: EventDetailView(eventName: event.name)) {
                 VStack(alignment: .leading) {
                 Text(event.name)
@@ -25,7 +26,7 @@ struct EventsView: View {
             }
         }
         .onAppear {
-            self.getEvents()
+            self.eventData.getEvents()
         }
         .navigationBarTitle("Eventos")
         .navigationBarItems(
@@ -33,27 +34,6 @@ struct EventsView: View {
             NavigationLink(destination: CreateEventView()) {
                 Image(systemName: "plus")
         })
-    }
-    func getEvents(){
-        db.collection("events")
-            .addSnapshotListener { (querySnapshot, error) in
-                self.events = []
-                if let e = error {
-                    print(e)
-                }
-                else {
-                    if let snapshotDocuments = querySnapshot?.documents{
-                        for doc in snapshotDocuments{
-                            let data = doc.data()
-                            if let eventName = data["name"] as? String,let eventDescription = data["description"] as? String{
-                                let newEvent = Event(id:self.events.count,name: eventName, description: eventDescription)
-                                self.events.append(newEvent)
-                                
-                            }
-                        }
-                    }
-                }
-        }
     }
 }
 
