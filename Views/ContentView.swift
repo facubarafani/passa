@@ -11,11 +11,31 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var eventData = EventData()
-    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "es_ES")
+        formatter.dateStyle = .long
+        return formatter
+    }
     var body: some View {
         NavigationView{
             
-            VStack {
+            VStack{
+                HStack{
+                    VStack(alignment: .leading) {
+                        
+                        Text(dateFormatter.string(from: Date()))
+                            .font(.title)
+                        Text("Hoy")
+                            .font(.subheadline)
+                            .foregroundColor(Color.gray)
+                    }
+                    .padding(15)
+                }
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                Spacer()
                 Text("Próximos Eventos")
                     .font(Font.title.weight(.bold))
                 ScrollView(.horizontal,showsIndicators: false) {
@@ -44,6 +64,7 @@ struct ContentView: View {
                         }
                     )
                 }
+                Spacer()
             }
         }
     }

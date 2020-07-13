@@ -21,57 +21,58 @@ struct EventDetailView: View {
     }
     
     var body: some View {
-        VStack{
-            Image("event-default")
-                .resizable()
-                .scaledToFit()
-                .overlay(
-                    HStack{
-                        VStack{
+        ScrollView {
+            VStack{
+                Image("event-default")
+                    .resizable()
+                    .scaledToFit()
+                    .overlay(
+                        HStack{
+                            VStack(alignment: .leading){
+                                Spacer()
+                                Text(eventName!)
+                                    .font(Font.title.weight(.bold))
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                            }
                             Spacer()
-                            Text(eventName!)
-                                .font(Font.title.weight(.bold))
-                                .foregroundColor(Color.white)
-                                .padding()
                         }
-                        Spacer()
+                )
+                VStack(){
+                    HStack{
+                        Image(systemName: "info.circle")
+                        Text("Descripción")
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(Color.gray)
                     }
-            )
-            VStack(alignment: .leading,spacing: 20){
-                HStack{
-                    Image(systemName: "info.circle")
-                    Text("Descripción")
-                        .font(Font.title.weight(.light))
-                        .foregroundColor(Color.gray)
+                    Text(eventDescription!)
                 }
-                Text(eventDescription!)
-            }
-            Divider()
-            VStack(alignment: .leading,spacing: 20){
-                HStack{
-                    Image(systemName: "mappin.and.ellipse")
-                    Text("Ubicación")
-                        .font(Font.title.weight(.light))
-                        .foregroundColor(Color.gray)
+                Divider()
+                VStack(){
+                    HStack{
+                        Image(systemName: "mappin.and.ellipse")
+                        Text("Ubicación")
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(Color.gray)
+                    }
+                    Text(eventLocation!)
                 }
-                Text(eventLocation!)
-            }
-            Divider()
-            VStack(alignment: .leading,spacing: 20){
-                HStack{
-                    Image(systemName: "calendar")
-                    Text("Fecha")
-                        .font(Font.title.weight(.light))
-                        .foregroundColor(Color.gray)
+                Divider()
+                VStack(){
+                    HStack{
+                        Image(systemName: "calendar")
+                        Text("Fecha")
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(Color.gray)
+                    }
+                    Text(dateFormatter.string(from: (eventDate?.dateValue())!))
                 }
-                Text(dateFormatter.string(from: (eventDate?.dateValue())!))
             }
-            Spacer()
+            
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        .edgesIgnoringSafeArea(.all)
-        
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
