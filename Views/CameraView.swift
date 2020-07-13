@@ -19,7 +19,7 @@ struct CameraView: View {
             .interval(delay: self.viewModel.scanInterval)
             VStack {
                 VStack {
-                    Text("Keep scanning for QR-codes")
+                    Text("Ubica el DNI en la pantalla")
                         .font(.subheadline)
                     Text(self.viewModel.lastQrCode)
                         .bold()

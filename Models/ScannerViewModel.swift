@@ -18,6 +18,9 @@ class ScannerViewModel: ObservableObject {
     
     
     func onFoundQrCode(_ code: String) {
+        let editedText = code.replacingOccurrences(of: "@", with: "\n")
+        let attendant = editedText.components(separatedBy: "\n")
+        let newAttendant = Attendant(name: attendant[2], surname: attendant[1], gender: attendant[3], birthdate: attendant[5])
         self.lastQrCode = code
     }
 }
