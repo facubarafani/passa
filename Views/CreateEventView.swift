@@ -22,6 +22,7 @@ struct CreateEventView: View {
     @State var eventDescription: String = ""
     @State var eventDate = Date()
     @State var eventLocation: String = ""
+    @State var isAgeRestricted: Bool = false
     let db = Firestore.firestore();
     
     var body: some View {
@@ -39,6 +40,9 @@ struct CreateEventView: View {
             Image(systemName: "mappin.and.ellipse");
                     TextField("Lugar del evento",text: $eventLocation)
                 }
+            Toggle(isOn: $isAgeRestricted) {
+                Text("+18")
+            }
         }
     .navigationBarTitle("Nuevo evento")
         .navigationBarItems(trailing: Button(action: {

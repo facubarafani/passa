@@ -20,6 +20,8 @@ struct EventDetailView: View {
         return formatter
     }
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         ScrollView {
             VStack{
@@ -29,6 +31,16 @@ struct EventDetailView: View {
                     .overlay(
                         HStack{
                             VStack(alignment: .leading){
+                                Button(action: {
+                                    self.presentation.wrappedValue.dismiss()
+                                }) {
+                                    HStack{
+                                        Image(systemName: "chevron.left")
+                                        Text("Atrás")
+                                    }
+                                }
+                                .padding(.init(top: 35, leading: 10, bottom: 0, trailing: 0))
+                                .foregroundColor(Color.blue)
                                 Spacer()
                                 Text(eventName!)
                                     .font(Font.title.weight(.bold))
