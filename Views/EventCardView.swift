@@ -70,7 +70,7 @@ struct EventCardView: View {
 
 struct EventCardView_Previews: PreviewProvider {
     static var previews: some View {
-        EventCardView(event: Event(id: 0, name: "Hernan Cattaneo @Forja", description:"Que lo que",location: "Forja",date: Timestamp(date: Date())))
+        EventCardView(event: Event(id: "xd", name: "Hernan Cattaneo @Forja", description:"Que lo que",location: "Forja",date: Timestamp(date: Date()),attendants: [Attendant]()))
             .previewLayout(.sizeThatFits)
     }
 }

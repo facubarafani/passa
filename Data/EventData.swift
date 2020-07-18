@@ -25,9 +25,8 @@ class EventData: ObservableObject {
                         for doc in snapshotDocuments{
                             let data = doc.data()
                             if let eventName = data["name"] as? String,let eventDescription = data["description"] as? String,let eventLocation = data["location"] as? String,let eventDate = data["date"] as? Timestamp {
-                                let newEvent = Event(id:self.events.count,name: eventName, description: eventDescription,location: eventLocation,date: eventDate)
+                                let newEvent = Event(id:doc.documentID,name: eventName, description: eventDescription,location: eventLocation,date: eventDate,attendants: [Attendant]())
                                 self.events.append(newEvent)
-                                
                             }
                         }
                     }

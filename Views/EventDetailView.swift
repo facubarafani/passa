@@ -14,6 +14,9 @@ struct EventDetailView: View {
     let eventDescription: String?
     let eventLocation: String?
     let eventDate: Timestamp?
+    let eventId: String?
+    let eventAttendants: [Attendant]?
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yy"
@@ -79,6 +82,9 @@ struct EventDetailView: View {
                     }
                     Text(dateFormatter.string(from: (eventDate?.dateValue())!))
                 }
+                NavigationLink(destination: CameraView(eventAttendants: eventAttendants!,eventId: eventId)) {
+                    Text("Agregar invitado")
+                }
             }
             
         }
@@ -90,6 +96,6 @@ struct EventDetailView: View {
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetailView(eventName: "Hernan Cattaneo",eventDescription: "Evento de alto nivel en el Complejo Forja donde se presentaran Hernan Cattaneo junto a Nick Warren.",eventLocation: "Forja Cordoba, Argentina",eventDate: Timestamp(date: Date()))
+        EventDetailView(eventName: "Hernan Cattaneo",eventDescription: "Evento de alto nivel en el Complejo Forja donde se presentaran Hernan Cattaneo junto a Nick Warren.",eventLocation: "Forja Cordoba, Argentina",eventDate: Timestamp(date: Date()), eventId: "xd",eventAttendants: [])
     }
 }

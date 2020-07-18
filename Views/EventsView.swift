@@ -15,13 +15,13 @@ struct EventsView: View {
     
     var body: some View {
         List(eventData.events) { event in
-            NavigationLink(destination: EventDetailView(eventName: event.name,eventDescription: event.description,eventLocation: event.location,eventDate: event.date)) {
+            NavigationLink(destination: EventDetailView(eventName: event.name,eventDescription: event.description,eventLocation: event.location,eventDate: event.date,eventId: event.id, eventAttendants: event.attendants)) {
                 VStack(alignment: .leading) {
-                Text(event.name)
-                    .bold()
-                Text(event.description)
-                    .italic()
-                    .foregroundColor(Color.gray)
+                    Text(event.name)
+                        .bold()
+                    Text(event.description)
+                        .italic()
+                        .foregroundColor(Color.gray)
                 }
             }
         }

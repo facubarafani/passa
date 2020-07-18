@@ -10,9 +10,10 @@ import Foundation
 import Firebase
 
 struct Event: Identifiable{
-    var id: Int
+    var id: String
     let name: String
     let description: String
     let location: String
     let date: Timestamp
+    var attendants: [Attendant]
 }
