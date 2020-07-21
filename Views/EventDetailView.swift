@@ -82,7 +82,7 @@ struct EventDetailView: View {
                     }
                     Text(dateFormatter.string(from: (eventDate?.dateValue())!))
                 }
-                NavigationLink(destination: CameraView(eventAttendants: eventAttendants!,eventId: eventId)) {
+                NavigationLink(destination: AddGuestCameraView(eventAttendants: eventAttendants!,eventId: eventId)) {
                     Text("Agregar invitado")
                 }
             }

@@ -18,26 +18,32 @@ struct CameraEventCardView: View {
         return formatter
     }
     
+    let colors = Gradient(colors: [Color.orange, Color.yellow])
+    
     var body: some View {
         VStack{
             VStack(alignment: .leading, spacing: 12) {
                 Text(event.name)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.white)
                 
                 HStack(alignment: .center, spacing: 15){
                     HStack{
                         Image(systemName: "mappin.and.ellipse")
+                            .foregroundColor(Color.white)
                         Text(event.location)
+                            .foregroundColor(Color.white)
                     }
                     HStack{
                         Image(systemName: "calendar")
+                            .foregroundColor(Color.white)
                         Text(dateFormatter.string(from: event.date.dateValue()))
+                            .foregroundColor(Color.white)
                     }
                 }
             }
             .padding(10)
         }
-        .background(Color.white)
+        .background(LinearGradient(gradient: colors, startPoint: .top, endPoint: .bottom))
         .cornerRadius(12)
         .shadow(color: Color.gray, radius: 8, x: 0, y: 0)
     }

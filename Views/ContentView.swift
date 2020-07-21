@@ -66,6 +66,12 @@ struct ContentView: View {
                 }
                 Spacer()
             }
+            .edgesIgnoringSafeArea(.bottom)
+            .background(
+                Image("passa-background")
+                .resizable()
+                .scaledToFill()
+                )
         }
     }
 }
